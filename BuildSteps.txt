@@ -30,3 +30,21 @@ Build android APK :
 From ?/python-for-android/dist/myDistName : 
 
 # ./build.py --package org.epitech.game --name eGame --version 1.0 --dir ~/Projects/summerCamp/gui/ debug
+
+
+Install APK on device :
+========================
+
+From ?/android/android-sdk-linux/platform-tools :
+
+#  sudo ./adb install -r ~/Projects/python-for-android/dist/autocor/bin/eGame-1.0-debug.apk
+
+
+Run console log :
+=================
+
+From ?/android/android-sdk-linux/platform-tools :
+
+#  sudo ./adb logcat
+
+
