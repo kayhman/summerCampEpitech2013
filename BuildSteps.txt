@@ -1,0 +1,32 @@
+Package Cython optimize module :
+================================
+From ?/Projects/summerCamp :
+
+# python setup.py sdist
+
+Copy Cython package to http server (using local apache):
+========================================================
+From ?/Projects/summerCamp :
+
+# sudo cp dist/myCythonPackage-1.1.tar.gz /var/www/download/myCythonPackage-1.1.tar.gz
+
+Compute md5sum of package :
+# md5sum /var/www/download/autocorrelation-1.1.tar.gz
+
+Inform python-for-android of package hash :
+
+# vi ?/python-for-android/recipes/myCythonPackage
+
+Build android dist with cython package:
+=======================================
+
+From ?/python-for-android/dist/myDistName : 
+
+# ./distribute.sh -m"kivy pyjnius myCythonPackage" -d myDistName
+
+Build android APK :
+===================
+
+From ?/python-for-android/dist/myDistName : 
+
+# ./build.py --package org.epitech.game --name eGame --version 1.0 --dir ~/Projects/summerCamp/gui/ debug
