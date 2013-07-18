@@ -31,6 +31,11 @@ From ?/python-for-android/dist/myDistName :
 
 # ./build.py --package org.epitech.game --name eGame --version 1.0 --dir ~/Projects/summerCamp/gui/ debug
 
+Alternative :
+=============
+Cloud builder :
+
+http://android.kivy.org/ !!!
 
 Install APK on device :
 ========================
@@ -38,6 +43,8 @@ Install APK on device :
 From ?/android/android-sdk-linux/platform-tools :
 
 #  sudo ./adb install -r ~/Projects/python-for-android/dist/autocor/bin/eGame-1.0-debug.apk
+
+Note that the -r option force previous installation (if any) removal.
 
 
 Run console log :
