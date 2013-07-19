@@ -1,0 +1,38 @@
+#:kivy 1.0
+
+<Renderer>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Epitech>:
+    noteLabel: noteLabel
+    invertButton: invertButton
+    volume: volume
+    renderer: renderer
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 5 
+        spacing: 5 
+        
+        Label:
+            id: noteLabel
+            text: 'This is an awesome epitech game'
+            size_hint_y: 0.1
+
+        ProgressBar:
+            value: 0.5
+            id: volume
+            size_hint_y: 0.01
+
+        Renderer:
+            id: renderer
+            #size: 450, 350 
+
+        Button:
+            id: invertButton 
+            text: 'Invert rotation' 
+            size_hint_y: 0.1
