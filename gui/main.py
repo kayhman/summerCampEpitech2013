@@ -91,15 +91,23 @@ class Renderer(Widget):
     def invert_rotation(self, dummy):
 	self.rotation = self.rotation * -1
 
+    def stop_rotation(self, dummy):
+	if self.rotation == 0:
+	    self.rotation = 1
+	else:
+	    self.rotation = 0 
+
 class Epitech(Screen):
     noteLabel = ObjectProperty()
     invertButton = ObjectProperty()
+    stopButton = ObjectProperty()
     volume = ObjectProperty()
     renderer = ObjectProperty()
 
     def build(self):
       self.noteLabel.text = "No key pressed"
       self.invertButton.bind(on_press=self.renderer.invert_rotation)
+      self.stopButton.bind(on_press=self.renderer.stop_rotation)
 
 class EpitechApp(App):
     def build(self):

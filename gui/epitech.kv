@@ -9,6 +9,7 @@
 <Epitech>:
     noteLabel: noteLabel
     invertButton: invertButton
+    stopButton: stopButton
     volume: volume
     renderer: renderer
 
@@ -32,7 +33,13 @@
             id: renderer
             #size: 450, 350 
 
-        Button:
-            id: invertButton 
-            text: 'Invert rotation' 
-            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                id: invertButton 
+                text: 'Invert rotation' 
+                size_hint_y: 0.1
+            Button:
+                id: stopButton 
+                text: 'Stop rotation' 
+                size_hint_y: 0.1
