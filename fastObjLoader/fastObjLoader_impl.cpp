@@ -19,8 +19,8 @@ int cpp_loadObjFile(const char* name, std::vector<float>& verticesNormalsAndText
 
 		if(line.size())
 		{
-			if(line[0] == '#')
-				continue;
+			//if(line[0] == '#')
+			//	continue;
 
 			std::istringstream sline(line);
 
@@ -37,9 +37,7 @@ int cpp_loadObjFile(const char* name, std::vector<float>& verticesNormalsAndText
 			   normals.push_back(nx);
 			   normals.push_back(ny);
 			   normals.push_back(nz);
-			}
-
-			if(head == "v")
+			} else if(head == "v")
 			{
 			   float x, y, z;
 			   sline >> x;
@@ -48,9 +46,7 @@ int cpp_loadObjFile(const char* name, std::vector<float>& verticesNormalsAndText
 			   vertices.push_back(x);
 			   vertices.push_back(y);
 			   vertices.push_back(z);
-			}	
-			
-			if(head == "f")
+			} else if(head == "f")
 			{
 			   int a, b, c;
 			   int an, bn, cn;
