@@ -3,3 +3,4 @@ fastObjLoader/dist/*
 fastObjLoader/fastObjLoader.cpp
 fastObjLoader/MANIFEST
 gui/*.pyc
+gui/*.pyo
