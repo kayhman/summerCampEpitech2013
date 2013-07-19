@@ -29,7 +29,7 @@ Build android APK :
 
 From ?/python-for-android/dist/myDistName : 
 
-# ./build.py --package org.epitech.game --name eGame --version 1.0 --dir ~/Projects/summerCamp/gui/ debug
+# ./build.py --package org.epitech.game --name eGame --icon ~/Projects/summerCamp/gui/epitech.png  --version 1.0 --dir ~/Projects/summerCamp/gui/ debug
 
 Alternative :
 =============
