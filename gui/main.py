@@ -7,13 +7,13 @@ from kivy.graphics.transformation import Matrix
 from kivy.graphics.opengl import *
 from kivy.graphics import *
 from objloader import ObjFile
+import fastObjLoader
 
 
 class Renderer(Widget):
     def __init__(self, **kwargs):
         self.canvas = RenderContext(compute_normal_mat=True)
         self.canvas.shader.source = resource_find('simple.glsl')
-        self.scene = ObjFile(resource_find("monkey.obj"))
         super(Renderer, self).__init__(**kwargs)
         with self.canvas:
             self.cb = Callback(self.setup_gl_context)
@@ -42,6 +42,22 @@ class Renderer(Widget):
         PushMatrix()
         Translate(0, 0, -3)
         self.rot = Rotate(1, 0, 1, 0)
+        UpdateNormalMatrix()
+	v, t = fastObjLoader.loadObjFile("monkey.obj")
+        self.mesh = Mesh(
+            vertices=v,
+            indices=t,
+            fmt=[('v_pos', 3, 'float'), ('v_normal', 3, 'float'), ('v_tc0', 2, 'float')],
+            mode='triangles',
+        )
+        PopMatrix()
+
+    def setup_scene_slow(self):
+        Color(1, 1, 1, 1)
+        PushMatrix()
+        Translate(0, 0, -3)
+        self.rot = Rotate(1, 0, 1, 0)
+        self.scene = ObjFile(resource_find("monkey.obj"))
         m = self.scene.objects.values()[0]
         UpdateNormalMatrix()
         self.mesh = Mesh(
