@@ -9,6 +9,7 @@ from kivy.graphics import *
 from objloader import ObjFile
 import fastObjLoader
 
+from time import sleep, time
 
 class Renderer(Widget):
     def __init__(self, **kwargs):
@@ -18,7 +19,7 @@ class Renderer(Widget):
         with self.canvas:
             self.cb = Callback(self.setup_gl_context)
             PushMatrix()
-            self.setup_scene()
+            self.setup_scene_fast()
             PopMatrix()
             self.cb = Callback(self.reset_gl_context)
         Clock.schedule_interval(self.update_glsl, 1 / 60.)
@@ -37,13 +38,16 @@ class Renderer(Widget):
         self.canvas['ambient_light'] = (0.1, 0.1, 0.1)
         self.rot.angle += 1
 
-    def setup_scene(self):
+    def setup_scene_fast(self):
         Color(1, 1, 1, 1)
         PushMatrix()
         Translate(0, 0, -3)
         self.rot = Rotate(1, 0, 1, 0)
         UpdateNormalMatrix()
+	start_time = time()
 	v, t = fastObjLoader.loadObjFile("monkey.obj")
+	stop_time = time()
+	print "fast loading last : ", (stop_time - start_time)
         self.mesh = Mesh(
             vertices=v,
             indices=t,
@@ -57,7 +61,10 @@ class Renderer(Widget):
         PushMatrix()
         Translate(0, 0, -3)
         self.rot = Rotate(1, 0, 1, 0)
+	start_time = time()
         self.scene = ObjFile(resource_find("monkey.obj"))
+	stop_time = time()
+	print "fast loading last : ", (stop_time - start_time)
         m = self.scene.objects.values()[0]
         UpdateNormalMatrix()
         self.mesh = Mesh(
