@@ -1,0 +1,4 @@
+fastObjLoader/build/*
+fastObjLoader/dist/*
+fastObjLoader/fastObjLoader.cpp
+fastObjLoader/MANIFEST
