@@ -103,13 +103,9 @@ class Epitech(Screen):
 
 class EpitechApp(App):
     def build(self):
-        self.sm = ScreenManager()
         self.game = Epitech(name="game")
         self.game.build()
-        self.sm.add_widget(self.game)
-	self.sm.curent = "game"
-        print "build done"
-        return self.sm
+        return self.game
 
 if __name__ == '__main__':
     EpitechApp().run()
